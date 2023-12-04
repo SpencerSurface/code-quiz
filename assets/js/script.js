@@ -20,10 +20,6 @@ let highScoreSection = buildHighScoreSection();
 
 
 
-function startQuiz() {
-
-}
-
 // Build and return the question section. Contains a heading and four answer buttons.
 function buildQuestionSection() {
     let questionSection = document.createElement("section");
