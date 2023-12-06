@@ -9,7 +9,7 @@
 // High score screen: high score clear button, back button
 
 /* Concept: Create section elements corresponding to each screen. Switch between screens by removing and adding their 
-respective sections as children of mainEl. (Plus hide header for high score screen). */
+respective sections as children of mainEl. (Minus for high score screen, which is a separate page). */
 
 const headerEl = document.querySelector("header");
 const mainEl = document.querySelector("main");
