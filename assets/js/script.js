@@ -16,7 +16,6 @@ const mainEl = document.querySelector("main");
 let startSection = document.querySelector("#start-section");
 let questionSection = buildQuestionSection();
 let gameOverSection = buildGameOverSection();
-let highScoreSection = buildHighScoreSection();
 
 
 
@@ -65,33 +64,4 @@ function buildGameOverSection() {
     gameOverSection.appendChild(highScoreInput);
 
     return gameOverSection
-}
-
-// Build and return the high score section. Contains a heading, the score list, a back button, and a clear button.
-function buildHighScoreSection() {
-    let highScoreSection = document.createElement("section");
-    highScoreSection.setAttribute("id", "high-score-section");
-
-    let headingEl = document.createElement("h1");
-    headingEl.textContent = "High Scores";
-    highScoreSection.appendChild(headingEl);
-
-    let highScoreList = document.createElement("ol");
-    // TODO: replace with actual scores
-    let listItem = document.createElement("li");
-    listItem.textContent = "Example score";
-    highScoreList.appendChild(listItem);
-    highScoreSection.appendChild(highScoreList);
-
-    let backButton = document.createElement("button");
-    backButton.setAttribute("id", "back-button");
-    backButton.textContent = "Go Back";
-    highScoreSection.appendChild(backButton);
-
-    let clearButton = document.createElement("button");
-    clearButton.setAttribute("id", "clear-button");
-    clearButton.textContent = "Clear Scores";
-    highScoreSection.appendChild(clearButton);
-
-    return highScoreSection
 }
