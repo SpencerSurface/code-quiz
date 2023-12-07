@@ -18,6 +18,9 @@ let startSection = document.querySelector("#start-section");
 let questionSection = buildQuestionSection();
 let gameOverSection = buildGameOverSection();
 
+// Track whether the quiz is in progress
+let quizRunning = false;
+
 // Switch to the questions screen and start the quiz upon start button click
 startButton.addEventListener("click", function() {
     // Remove the start screen
@@ -32,7 +35,13 @@ startButton.addEventListener("click", function() {
 
 // Start the quiz
 function startQuiz() {
+    quizRunning = true;
+    startTimer();
+}
 
+// Start the timer
+function startTimer() {
+    
 }
 
 // Build and return the question section. Contains a heading and four answer buttons.
