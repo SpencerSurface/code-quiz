@@ -14,12 +14,16 @@ respective sections as children of mainEl. (Minus for high score screen, which i
 const headerEl = document.querySelector("header");
 const mainEl = document.querySelector("main");
 const startButton = document.querySelector("#start-button");
+const timeSpan = document.querySelector("#time-count");
 let startSection = document.querySelector("#start-section");
 let questionSection = buildQuestionSection();
 let gameOverSection = buildGameOverSection();
 
 // Track whether the quiz is in progress
 let quizRunning = false;
+
+// Track how much time remains
+let timeLeft;
 
 // Switch to the questions screen and start the quiz upon start button click
 startButton.addEventListener("click", function() {
@@ -41,7 +45,27 @@ function startQuiz() {
 
 // Start the timer
 function startTimer() {
-    
+    timeLeft = 75;
+    renderTime();
+    let timerInterval = setInterval(function () {
+        if (timeLeft > 0) {
+            timeLeft--;
+            renderTime();
+        } else {
+            endQuiz();
+            clearInterval(timerInterval);
+        }
+    }, 1000);
+}
+
+// Render the time to the page
+function renderTime() {
+    timeSpan.textContent = timeLeft;
+}
+
+// End the quiz
+function endQuiz() {
+
 }
 
 // Build and return the question section. Contains a heading and four answer buttons.
