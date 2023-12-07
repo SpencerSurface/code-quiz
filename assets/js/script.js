@@ -13,11 +13,27 @@ respective sections as children of mainEl. (Minus for high score screen, which i
 
 const headerEl = document.querySelector("header");
 const mainEl = document.querySelector("main");
+const startButton = document.querySelector("#start-button");
 let startSection = document.querySelector("#start-section");
 let questionSection = buildQuestionSection();
 let gameOverSection = buildGameOverSection();
 
+// Switch to the questions screen and start the quiz upon start button click
+startButton.addEventListener("click", function() {
+    // Remove the start screen
+    mainEl.replaceChildren();
+    // Add the questions screen
+    mainEl.append(questionSection);
+    // Start quiz
+    startQuiz();
+})
 
+
+
+// Start the quiz
+function startQuiz() {
+
+}
 
 // Build and return the question section. Contains a heading and four answer buttons.
 function buildQuestionSection() {
