@@ -1,20 +1,32 @@
+// Get element objects for the score list and the clear button
 const listEl = document.querySelector("#scores-list");
+const clearButton = document.querySelector("#clear-button");
 
+// Render the stored scores upon page load
 renderScores();
 
-// Render the high scores to the page upon loading
+// Delete stored scores, remove scores from DOM, and render (lack of) scores upon clear button click
+clearButton.addEventListener("click", function() {
+    localStorage.removeItem("scores");
+    listEl.replaceChildren();
+    renderScores();
+})
+
+// Render the high scores to the page
 function renderScores() {
-    let scores = localStorage.getItem("scores");
-
-    // If scores is null, there's nothing to render
-    if (!scores) {
-        return
-    }
-
-    scores = JSON.parse(scores);
+    let scores = JSON.parse(localStorage.getItem("scores"));
 
     let tempListItem;
 
+    // If scores is null or empty, there's nothing to render
+    if (!scores || scores.length === 0) {
+        tempListItem = document.createElement("li");
+        tempListItem.textContent = "No scores yet!";
+        listEl.appendChild(tempListItem);
+        return
+    }
+
+    // Else, render each score to the page in the scores list
     for (let i = 0; i < scores.length; i++) {
         tempListItem = document.createElement("li");
         tempListItem.textContent = scores[i];
