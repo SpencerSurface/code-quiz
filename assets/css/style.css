@@ -1,3 +1,4 @@
+/* Color variables */
 :root {
     --grey: rgb(158,158,158);
     --darkpurple: rgb(49,32,112);
@@ -5,6 +6,7 @@
     --palepurple: rgb(216,212,231);
 }
 
+/* General stylings */
 * {
     padding: 0;
     margin: 0;
@@ -14,11 +16,14 @@
     text-decoration: none;
 }
 
+/* Header stylings */
 header {
+    /* Keep the position of the main the same with or without the header */
     position: absolute;
     top: 0;
     width: 100%;
     padding: 1em 1.5em;
+    /* Position the link and the timer at opposite ends of the header */
     display: flex;
     justify-content: space-between;
 }
@@ -27,36 +32,45 @@ a {
     color: var(--brightpurple);
 }
 
+/* Main stylings */
 section {
+    /* Position the content vertically */
     margin-top: 20vh;
+    /* Arrange the internal content in a column */
     display: flex;
     flex-direction: column;
     gap: 1.2em;
 }
 
 section#start-section {
+    /* The start section's items should be center-aligned */
     align-items: center;
+    text-align: center;
 }
 
 section#question-section, section#game-over-section, section#high-score-section {
+    /* The other section's items should be left-aligned */
     margin-left: 25%;
     align-items: flex-start;
 }
 
 section#question-section {
+    /* The gaps between the buttons in the question section should be small */
     gap: 0.5em;   
 }
 
 section#start-section * {
+    /* The paragraph in the start section should wrap */
     max-width: 60%;
-    text-align: center;
 }
 
 h1 {
+    /* Larger font for the h1 */
     font-size: 2em;
 }
 
 button, input[type="submit"] {
+    /* Style the buttons and submit buttons */
     color: white;
     background-color: var(--darkpurple);
     border: none;
@@ -65,19 +79,23 @@ button, input[type="submit"] {
 }
 
 button:active, input[type="submit"]:active {
+    /* Make the buttons, submit buttons change color when clicked */
     background-color: var(--brightpurple);
 }
 
 #back-button, #clear-button, input[type="submit"] {
+    /* The back, clear, and submit buttons should be smaller */
     font-size: 0.9em;
     border-radius: 0.3em;
     padding: 0.4em 1em;
 }
 
 input {
+    /* Space between the textbox and the submit button */
     margin-inline: 0.3em;
 }
 
 input[type="text"] {
+    /* Adjust the size of the textbox */
     height: 1.6em;
 }
