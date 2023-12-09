@@ -69,6 +69,13 @@ function startTimer() {
     timeLeft = 75;
     renderTime();
     let timerInterval = setInterval(function () {
+        // Stop the timer if the quiz is no longer in progress
+        if (!quizRunning) {
+            renderTime();
+            clearInterval(timerInterval);
+            return
+        }
+        // Otherwise, decrement the timer if there's time left, else end the quiz
         if (timeLeft > 0) {
             timeLeft--;
             renderTime();
@@ -124,7 +131,12 @@ function displayBlurb(blurbText) {
 
 // End the quiz
 function endQuiz() {
-
+    quizRunning = false;
+    // Switch from the question screen to the game over screen
+    mainEl.replaceChildren();
+    mainEl.append(gameOverSection);
+    // Render the player's score to the screen
+    document.querySelector("#score-span").textContent = timeLeft;
 }
 
 // Build and return the question section. Contains a heading and four answer buttons.
@@ -158,7 +170,7 @@ function buildGameOverSection() {
     gameOverSection.appendChild(headingEl);
 
     let scoreEl = document.createElement("p");
-    scoreEl.textContent = "Your score is 10";
+    scoreEl.innerHTML = "Your score is <span id='score-span'></span>";
     gameOverSection.appendChild(scoreEl);
 
     let highScoreInput = document.createElement("form");
