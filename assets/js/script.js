@@ -73,6 +73,7 @@ function startTimer() {
             timeLeft--;
             renderTime();
         } else {
+            renderTime();
             endQuiz();
             clearInterval(timerInterval);
         }
