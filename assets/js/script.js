@@ -36,7 +36,7 @@ startButton.addEventListener("click", function() {
     mainEl.append(questionSection);
     // Start quiz
     startQuiz();
-})
+});
 
 // Handle answer upon answer button click
 questionSection.addEventListener("click", function(event) {
@@ -51,7 +51,20 @@ questionSection.addEventListener("click", function(event) {
             endQuiz();
         }
     }
-})
+});
+
+// Handle score submission upon submit button click
+gameOverSection.addEventListener("submit", function(event) {
+    event.preventDefault();
+    let inputEl = event.target.querySelector("input[type='text']");
+    let userInput = inputEl.value;
+    if (!userInput || userInput === "") {
+        alert("If you want to submit a score, you must include your initials.");
+    } else {
+        storeScore(userInput, timeLeft);
+        document.location = "highscore.html";
+    }
+});
 
 
 
@@ -137,6 +150,11 @@ function endQuiz() {
     mainEl.append(gameOverSection);
     // Render the player's score to the screen
     document.querySelector("#score-span").textContent = timeLeft;
+}
+
+// Store the user's score and initials in localStorage
+function storeScore(initials, score) {
+
 }
 
 // Build and return the question section. Contains a heading and four answer buttons.
