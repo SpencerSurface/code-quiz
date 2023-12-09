@@ -25,6 +25,9 @@ let quizRunning = false;
 // Track how much time remains
 let timeLeft;
 
+// Track which question is current
+let questionNum;
+
 // Switch to the questions screen and start the quiz upon start button click
 startButton.addEventListener("click", function() {
     // Remove the start screen
@@ -39,7 +42,13 @@ startButton.addEventListener("click", function() {
 questionSection.addEventListener("click", function(event) {
     if(event.target.classList.contains("answer-button")) {
         // TODO: check answer (check, announce result, if wrong: decrement timer)
-        // TODO: load next question
+        // If there's more questions, render the next question, else end the quiz
+        questionNum++;
+        if (questionNum < questions.length) {
+            renderQuestion();
+        } else {
+            endQuiz();
+        }
     }
 })
 
@@ -49,7 +58,9 @@ questionSection.addEventListener("click", function(event) {
 function startQuiz() {
     quizRunning = true;
     startTimer();
-    // TODO: load first question
+    // Render the first question
+    questionNum = 0;
+    renderQuestion();
 }
 
 // Start the timer
@@ -70,6 +81,15 @@ function startTimer() {
 // Render the time to the page
 function renderTime() {
     timeSpan.textContent = timeLeft;
+}
+
+// Render the current question to the page
+function renderQuestion() {
+    questionSection.firstChild.textContent = questions[questionNum].qText;
+    let answerButtons = document.querySelectorAll(".answer-button");
+    for (let i = 0; i < answerButtons.length; i++) {
+        answerButtons[i].textContent = (i + 1) + ". " + questions[questionNum].aTextArr[i];
+    }
 }
 
 // End the quiz
