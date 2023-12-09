@@ -56,7 +56,8 @@ section#question-section, section#game-over-section, section#high-score-section 
 
 section#question-section {
     /* The gaps between the buttons in the question section should be small */
-    gap: 0.5em;   
+    gap: 0.5em; 
+    margin-right: 10%;  
 }
 
 section#start-section * {
@@ -88,6 +89,20 @@ button:active, input[type="submit"]:active {
     font-size: 0.9em;
     border-radius: 0.3em;
     padding: 0.4em 1em;
+}
+
+/* Style the ruling and blurb that appear after answering a question */
+hr {
+    margin-top: 1em;
+    width: 100%;
+}
+
+hr, #blurb {
+    color: var(--grey);
+}
+
+#blurb {
+    font-style: italic;
 }
 
 input {

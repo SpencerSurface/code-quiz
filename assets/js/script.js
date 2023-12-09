@@ -107,7 +107,19 @@ function renderQuestion() {
 
 // Display a blurb at the bottom of the questions section for one second
 function displayBlurb(blurbText) {
-
+    // Create the horizontal ruling and blurb elements to display
+    let lineEl = document.createElement("hr");
+    questionSection.appendChild(lineEl);
+    let blurbEl = document.createElement("aside");
+    blurbEl.id = "blurb";
+    blurbEl.textContent = blurbText;
+    // Add them to the question section element
+    questionSection.appendChild(blurbEl);
+    // After one second, remove them
+    setTimeout(function() {
+        questionSection.removeChild(lineEl);
+        questionSection.removeChild(blurbEl);
+    }, 1000);
 }
 
 // End the quiz
