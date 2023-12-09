@@ -35,12 +35,21 @@ startButton.addEventListener("click", function() {
     startQuiz();
 })
 
+// Handle answer upon answer button click
+questionSection.addEventListener("click", function(event) {
+    if(event.target.classList.contains("answer-button")) {
+        // TODO: check answer (check, announce result, if wrong: decrement timer)
+        // TODO: load next question
+    }
+})
+
 
 
 // Start the quiz
 function startQuiz() {
     quizRunning = true;
     startTimer();
+    // TODO: load first question
 }
 
 // Start the timer
@@ -81,6 +90,8 @@ function buildQuestionSection() {
     for (let i = 0; i < 4; i++) {
         buttonEls.push(document.createElement("button"));
         buttonEls[i].textContent = i + 1 + "."
+        buttonEls[i].classList.add("answer-button")
+        console.log(buttonEls[i].classList);
         questionSection.appendChild(buttonEls[i]);
     }
 
