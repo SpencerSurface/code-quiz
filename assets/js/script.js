@@ -200,7 +200,6 @@ function buildQuestionSection() {
         buttonEls.push(document.createElement("button"));
         buttonEls[i].textContent = i + 1 + "."
         buttonEls[i].classList.add("answer-button")
-        console.log(buttonEls[i].classList);
         questionSection.appendChild(buttonEls[i]);
     }
 
