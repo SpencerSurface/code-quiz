@@ -41,7 +41,8 @@ startButton.addEventListener("click", function() {
 // Handle answer upon answer button click
 questionSection.addEventListener("click", function(event) {
     if(event.target.classList.contains("answer-button")) {
-        // TODO: check answer (check, announce result, if wrong: decrement timer)
+        // Check answer and handle result
+        checkAnswer(event.target.textContent.slice(3));
         // If there's more questions, render the next question, else end the quiz
         questionNum++;
         if (questionNum < questions.length) {
@@ -83,6 +84,17 @@ function renderTime() {
     timeSpan.textContent = timeLeft;
 }
 
+// Check whether the provided answer is correct, and handle the result
+function checkAnswer(answer) {
+    if (questions[questionNum].checkAnswer(answer)) {
+        displayBlurb("Correct!");
+    } else {
+        displayBlurb("Wrong!");
+        timeLeft -= 10;
+        timeLeft = (timeLeft >= 0) ? timeLeft : 0;
+    }
+}
+
 // Render the current question to the page
 function renderQuestion() {
     questionSection.firstChild.textContent = questions[questionNum].qText;
@@ -90,6 +102,11 @@ function renderQuestion() {
     for (let i = 0; i < answerButtons.length; i++) {
         answerButtons[i].textContent = (i + 1) + ". " + questions[questionNum].aTextArr[i];
     }
+}
+
+// Display a blurb at the bottom of the questions section for one second
+function displayBlurb(blurbText) {
+
 }
 
 // End the quiz
