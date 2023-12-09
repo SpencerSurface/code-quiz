@@ -154,7 +154,36 @@ function endQuiz() {
 
 // Store the user's score and initials in localStorage
 function storeScore(initials, score) {
-
+    // Get the scores array from storage
+    let scores = localStorage.getItem("scores");
+    // If it's not in the storage, create it with the current score
+    if (!scores) {
+        scores = [{initials, score}];
+    // Else, add the current score and sort the array
+    } else {
+        scores = JSON.parse(scores);
+        scores.push({initials: initials, score: score});
+        // Sort the scores - higher scores first, then alphabetically in case of a tie
+        scores.sort(function(a, b) {
+            let sortOrder = 0;
+            if (a.score > b.score) {
+                sortOrder = -1;
+            } else if (a.score < b.score) {
+                sortOrder = 1;
+            } else {
+                if (a.initials > b.initials) {
+                    sortOrder = 1;
+                } else if (a.initials < b.initials) {
+                    sortOrder = -1;
+                } else {
+                    sortOrder = 0;
+                }
+            }
+            return sortOrder;
+        });
+    }
+    // Finally, save the scores array to the storage
+    localStorage.setItem("scores", JSON.stringify(scores));
 }
 
 // Build and return the question section. Contains a heading and four answer buttons.

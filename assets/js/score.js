@@ -37,7 +37,7 @@ function renderScores() {
     // Else, render each score to the page in the scores list
     for (let i = 0; i < scores.length; i++) {
         tempListItem = document.createElement("li");
-        tempListItem.textContent = scores[i];
+        tempListItem.textContent = scores[i].initials + " - " + scores[i].score;
         listEl.appendChild(tempListItem);
     }
 }
