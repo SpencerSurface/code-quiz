@@ -18,9 +18,9 @@ class Question {
 
 // Store the questions in an array
 let questions = [
-    new Question("Which of the following is NOT a built-in data type?", ["string", "boolean", "alert", "number"], "alert"),
-    new Question("The condition in an if statement is enclosed with what?", ["quotes", "curly braces", "parentheses", "square brackets"], "parentheses"),
-    new Question("What can Javascript arrays store?", ["numbers and strings", "other arrays", "booleans", "all of the above"], "all of the above"),
-    new Question("String literals must be enclosed with what when assigning to variables?", ["commas", "curly braces", "quotes", "parentheses"], "quotes"),
-    new Question("Which tool can print content to the debugger?", ["JavaScript", "bash", "for loops", "console.log"], "console.log")
+    new Question("Which Web Storage API mechanism allows values to be stored across browser sessions?", ["browserStorage", "localStorage", "diskStorage", "sessionStorage"], "localStorage"),
+    new Question("What is the syntax of the ternary operator?", ["condition ? valIfTrue : valIfFalse", "expression : val1 ? val2", "function ! valIfFalse ~ valIfTrue", "operator @ val1 # val2"], "condition ? valIfTrue : valIfFalse"),
+    new Question("Which array method does NOT mutate the array?", ["sort()", "pop()", "toSorted()", "push()"], "toSorted()"),
+    new Question("Which of the following are JavaScript objects?", ["numbers", "functions", "strings", "all of the above"], "all of the above"),
+    new Question("Which shape best describes the DOM?", ["a ring", "a tree", "a pinwheel", "a tangle"], "a tree")
 ];
