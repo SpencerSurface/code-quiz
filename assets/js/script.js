@@ -189,45 +189,53 @@ function storeScore(initials, score) {
 
 // Build and return the question section. Contains a heading and four answer buttons.
 function buildQuestionSection() {
+    // Create the question section element
     let questionSection = document.createElement("section");
     questionSection.setAttribute("id", "question-section");
 
+    // Create and append the heading element
     let headingEl = document.createElement("h1");
-    headingEl.textContent = "What are frogs?";
     questionSection.appendChild(headingEl);
 
+    // Create and append each of four button elements
     let buttonEls = [];
     for (let i = 0; i < 4; i++) {
         buttonEls.push(document.createElement("button"));
-        buttonEls[i].textContent = i + 1 + "."
         buttonEls[i].classList.add("answer-button")
         questionSection.appendChild(buttonEls[i]);
     }
 
+    // Create and append an initially hidden horizontal ruling element
     let lineEl = document.createElement("hr");
     lineEl.style = "display:none";
     questionSection.append(lineEl);
 
+    // Create and append an initially empty aside element
     let blurbEl = document.createElement("aside");
     blurbEl.id = "blurb";
     questionSection.appendChild(blurbEl);
 
+    // Return the completed question section element
     return questionSection
 }
 
 // Build and return the game over section. Contains a heading, text about the score, and an area to submit the score.
 function buildGameOverSection() {
+    // Create the game over section element
     let gameOverSection = document.createElement("section");
     gameOverSection.setAttribute("id", "game-over-section");
 
+    // Create and append the heading element
     let headingEl = document.createElement("h1");
     headingEl.textContent = "Game Over"
     gameOverSection.appendChild(headingEl);
 
+    // Create and append the paragraph element announcing the score
     let scoreEl = document.createElement("p");
     scoreEl.innerHTML = "Your score is <span id='score-span'></span>";
     gameOverSection.appendChild(scoreEl);
 
+    // Create and append the form element, with its nested elements
     let highScoreInput = document.createElement("form");
     let highScoreLabel = document.createElement("label");
     highScoreLabel.textContent = "Enter your initials: "
@@ -242,5 +250,6 @@ function buildGameOverSection() {
     highScoreInput.appendChild(highScoreSubmit);
     gameOverSection.appendChild(highScoreInput);
 
+    // Return the completed game over section element
     return gameOverSection
 }
