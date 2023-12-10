@@ -33,6 +33,7 @@ startButton.addEventListener("click", function() {
 questionSection.addEventListener("click", function(event) {
     if(event.target.classList.contains("answer-button")) {
         // Check answer and handle result
+        // (Note: the number is sliced from the answer to get correct format)
         checkAnswer(event.target.textContent.slice(3));
         // If there's more questions, render the next question, else end the quiz
         questionNum++;
@@ -49,8 +50,10 @@ gameOverSection.addEventListener("submit", function(event) {
     event.preventDefault();
     let inputEl = event.target.querySelector("input[type='text']");
     let userInput = inputEl.value;
+    // If the user input is blank, reprompt
     if (!userInput || userInput === "") {
         alert("If you want to submit a score, you must include your initials.");
+    // Else store the user's score and navigate to the highscore page
     } else {
         storeScore(userInput, timeLeft);
         document.location = "highscore.html";
@@ -98,10 +101,12 @@ function renderTime() {
 
 // Check whether the provided answer is correct, and handle the result
 function checkAnswer(answer) {
+    // Display a blurb state whether the answer was correct
     if (questions[questionNum].checkAnswer(answer)) {
         displayBlurb("Correct!");
     } else {
         displayBlurb("Wrong!");
+        // If the answer was incorrect, decrement the timer, but keep the time >= 0
         timeLeft -= 10;
         timeLeft = (timeLeft >= 0) ? timeLeft : 0;
     }
@@ -109,9 +114,12 @@ function checkAnswer(answer) {
 
 // Render the current question to the page
 function renderQuestion() {
+    // Set the question text
     questionSection.firstChild.textContent = questions[questionNum].qText;
+    // For each answer button, set the answer text
     let answerButtons = document.querySelectorAll(".answer-button");
     for (let i = 0; i < answerButtons.length; i++) {
+        // (Note: the number is added in front of the answer to make the list look correct)
         answerButtons[i].textContent = (i + 1) + ". " + questions[questionNum].aTextArr[i];
     }
 }
