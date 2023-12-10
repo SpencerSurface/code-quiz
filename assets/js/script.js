@@ -28,6 +28,9 @@ let timeLeft;
 // Track which question is current
 let questionNum;
 
+// Track how many blurbs are attempting to be displayed
+let blurbCount = 0;
+
 // Switch to the questions screen and start the quiz upon start button click
 startButton.addEventListener("click", function() {
     // Remove the start screen
@@ -127,18 +130,20 @@ function renderQuestion() {
 
 // Display a blurb at the bottom of the questions section for one second
 function displayBlurb(blurbText) {
-    // Create the horizontal ruling and blurb elements to display
-    let lineEl = document.createElement("hr");
-    questionSection.appendChild(lineEl);
-    let blurbEl = document.createElement("aside");
-    blurbEl.id = "blurb";
+    // Style the horizontal ruling and blurb elements to be visible
+    let lineEl = document.querySelector("hr");
+    lineEl.style = "display:auto"
+    let blurbEl = document.querySelector("#blurb");
     blurbEl.textContent = blurbText;
-    // Add them to the question section element
-    questionSection.appendChild(blurbEl);
-    // After one second, remove them
+    // Add one to the blurb count
+    blurbCount++;
+    // After one second, decrement blurb count, hide line and blurb if blurb count is zero
     setTimeout(function() {
-        questionSection.removeChild(lineEl);
-        questionSection.removeChild(blurbEl);
+        blurbCount--;
+        if (blurbCount === 0) {
+            lineEl.style = "display:none";
+            blurbEl.textContent = "";
+        }
     }, 1000);
 }
 
@@ -202,6 +207,14 @@ function buildQuestionSection() {
         buttonEls[i].classList.add("answer-button")
         questionSection.appendChild(buttonEls[i]);
     }
+
+    let lineEl = document.createElement("hr");
+    lineEl.style = "display:none";
+    questionSection.append(lineEl);
+
+    let blurbEl = document.createElement("aside");
+    blurbEl.id = "blurb";
+    questionSection.appendChild(blurbEl);
 
     return questionSection
 }
