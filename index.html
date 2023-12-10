@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
-    <!-- Header: Contains high score link, timer. Hidden in high score screen. -->
+    <!-- Header -->
     <header>
         <a id="high-score-link" href="./highscore.html">View high scores</a>
         <p id="timer">Time: <span id="time-count">0</span></p>
     </header>
 
-    <!-- Main: Title and description in start screen; question options an result in question screen; title, result, submission box in game over screen -->
+    <!-- Main content -->
     <main>
         <section id="start-section">
             <h1>Coding Quiz Challenge</h1>
@@ -21,6 +21,8 @@
             <button id="start-button">Start Quiz</button>
         </section>
     </main>
+
+    <!-- Scripts: question.js is loaded first so the rest of the code can access the array 'questions' -->
     <script src="./assets/js/questions.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
