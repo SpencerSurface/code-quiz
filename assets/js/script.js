@@ -235,9 +235,11 @@ function buildGameOverSection() {
     let highScoreInput = document.createElement("form");
     let highScoreLabel = document.createElement("label");
     highScoreLabel.textContent = "Enter your initials: "
+    highScoreLabel.setAttribute("for", "initials-input");
     highScoreInput.appendChild(highScoreLabel);
     let highScoreText = document.createElement("input");
     highScoreText.setAttribute("type", "text");
+    highScoreText.id = "initials-input";
     highScoreInput.appendChild(highScoreText);
     let highScoreSubmit = document.createElement("input");
     highScoreSubmit.setAttribute("type", "submit");
