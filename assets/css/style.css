@@ -4,6 +4,7 @@
     --darkpurple: rgb(49,32,112);
     --brightpurple: rgb(177,105,224);
     --palepurple: rgb(216,212,231);
+    --paledarkpurple: rgb(172, 158, 224);
 }
 
 /* General stylings */
@@ -32,7 +33,7 @@ a {
     color: var(--brightpurple);
 }
 
-/* Main stylings */
+/* Section stylings */
 section {
     /* Position the content vertically */
     margin-top: 20vh;
@@ -60,16 +61,22 @@ section#question-section {
     margin-right: 10%;  
 }
 
+section#high-score-section {
+    margin-right: 25%;
+}
+
 section#start-section * {
     /* The paragraph in the start section should wrap */
     max-width: 60%;
 }
 
+/* Heading stylings */
 h1 {
     /* Larger font for the h1 */
     font-size: 2em;
 }
 
+/* Button stylings */
 button, input[type="submit"] {
     /* Style the buttons and submit buttons */
     color: white;
@@ -105,6 +112,7 @@ hr, #blurb {
     font-style: italic;
 }
 
+/* Game over screen stylings */
 input {
     /* Space between the textbox and the submit button */
     margin-inline: 0.3em;
@@ -113,4 +121,24 @@ input {
 input[type="text"] {
     /* Adjust the size of the textbox */
     height: 1.6em;
+    /* Add padding to the inside of the textbox */
+    padding: 0.2em;
+}
+
+/* Highscores page stylings */
+ol {
+    /* Make the list items take the full width */
+    width: 100%;
+}
+
+li {
+    background-color: var(--palepurple);
+    /* Place the list numbers inside the list element, not to the left */
+    list-style-position: inside;
+    padding: 0.2em 0.4em;
+}
+
+li:nth-child(2n) {
+    /* Give alternating list items a different background color */
+    background-color: var(--paledarkpurple);
 }
