@@ -1,23 +1,11 @@
-// Header (all screens, hidden on high score screen): high score link, timer
-
-// Start screen: start button
-
-// Question screen: answer buttons, question result
-
-// Game over screen: high score submission
-
-// High score screen: high score clear button, back button
-
-/* Concept: Create section elements corresponding to each screen. Switch between screens by removing and adding their 
-respective sections as children of mainEl. (Minus for high score screen, which is a separate page). */
-
+// Create and store element objects that will be used later
 const headerEl = document.querySelector("header");
 const mainEl = document.querySelector("main");
 const startButton = document.querySelector("#start-button");
 const timeSpan = document.querySelector("#time-count");
-let startSection = document.querySelector("#start-section");
-let questionSection = buildQuestionSection();
-let gameOverSection = buildGameOverSection();
+const startSection = document.querySelector("#start-section");
+const questionSection = buildQuestionSection();
+const gameOverSection = buildGameOverSection();
 
 // Track whether the quiz is in progress
 let quizRunning = false;
