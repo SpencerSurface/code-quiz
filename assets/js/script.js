@@ -19,6 +19,9 @@ let questionNum;
 // Track how many blurbs are attempting to be displayed
 let blurbCount = 0;
 
+// Note the max number of high scores to store
+const maxScoreCount = 5;
+
 // Switch to the questions screen and start the quiz upon start button click
 startButton.addEventListener("click", function() {
     // Remove the start screen
@@ -182,6 +185,10 @@ function storeScore(initials, score) {
             }
             return sortOrder;
         });
+        // If scores contains more elements than the maxScoreCount, remove the lowest scores
+        while (scores.length > maxScoreCount) {
+            scores.pop();
+        }
     }
     // Finally, save the scores array to the storage
     localStorage.setItem("scores", JSON.stringify(scores));
