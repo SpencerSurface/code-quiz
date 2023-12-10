@@ -142,3 +142,26 @@ li:nth-child(2n) {
     /* Give alternating list items a different background color */
     background-color: var(--paledarkpurple);
 }
+
+/* Screen size-responsive stylings */
+@media (max-width: 1000px) {
+    section#question-section, section#game-over-section, section#high-score-section {
+        margin-left: 10%;
+    }
+}
+
+@media (max-width: 780px) {
+    section#start-section * {
+        max-width: 80%;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em
+    }
+}
